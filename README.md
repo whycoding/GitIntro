@@ -10,6 +10,6 @@ https://whycoding.github.io/git_intro_practice/
 
 * Try to finish the practice at the end of each section
 * Interact with the author
- * fork this repository
- * modify the acknowlegement.md or add files under the folder contribution
- * send pull request 
+	* fork this repository
+	* modify the acknowlegement.md or add files under the folder contribution
+	* send pull request 
