@@ -2,6 +2,7 @@
 
 This project introduce the basic knowledge of git and provides a place to practice the git command. 
 
+Now I add this line for auto-test
 
 ## How to use this project
 
