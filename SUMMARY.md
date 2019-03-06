@@ -1,7 +1,10 @@
 # Summary
 
-* [Introduction](README.md)
-* [Chap1](01background.md)
-* [Chap2](02term.md)
+
+* [引言](README.md)
+* [历史简介](历史简介.md)
+* [基本概念](基本概念.md)
+* [版本控制](版本控制.md)
+* [多人协作](多人协作.md)
 
 
