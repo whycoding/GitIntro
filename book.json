@@ -20,7 +20,7 @@
 
     "pluginsConfig": {
         "theme-default": {
-            "showLevel": true
+            "showLevel": false
         },
 		
         "edit-link": {
@@ -30,7 +30,8 @@
 		
         "anchor-navigation-ex": {
 			"showLevel": true,
-			"associatedWithSummary": true,
+            "associatedWithSummary": false,
+            "multipleH1": false,
             "tocLevel1Icon": "fa fa-hand-o-right",
             "tocLevel2Icon": "fa fa-hand-o-right",
             "tocLevel3Icon": "fa fa-hand-o-right"
