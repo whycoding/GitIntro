@@ -1,0 +1,382 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>版本管理 · GitHandOut</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Haoyuan Wei">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-katex-plus/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="分支管理.html" />
+    
+    
+    <link rel="prev" href="创建仓库.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://sce.carleton.ca/~haoyuanwei" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="简介.html">
+            
+                <a href="简介.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="创建仓库.html">
+            
+                <a href="创建仓库.html">
+            
+                    
+                    创建仓库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="版本管理.html">
+            
+                <a href="版本管理.html">
+            
+                    
+                    版本管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="分支管理.html">
+            
+                <a href="分支管理.html">
+            
+                    
+                    分支管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="远程仓库.html">
+            
+                <a href="远程仓库.html">
+            
+                    
+                    远程仓库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >版本管理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x7248;&#x672C;&#x7BA1;&#x7406;"><b> </b>&#x7248;&#x672C;&#x7BA1;&#x7406;</a></li><ul><li><span class="title-icon "></span><a href="#&#x7248;&#x672C;&#x56DE;&#x6EAF;"><b>1. </b>&#x7248;&#x672C;&#x56DE;&#x6EAF;</a></li><li><span class="title-icon "></span><a href="#&#x67E5;&#x770B;&#x5DEE;&#x5F02;"><b>2. </b>&#x67E5;&#x770B;&#x5DEE;&#x5F02;</a></li><li><span class="title-icon "></span><a href="#&#x64A4;&#x9500;&#x4FEE;&#x6539;"><b>3. </b>&#x64A4;&#x9500;&#x4FEE;&#x6539;</a></li><li><span class="title-icon "></span><a href="#&#x4FDD;&#x5B58;&#x73B0;&#x573A;"><b>4. </b>&#x4FDD;&#x5B58;&#x73B0;&#x573A;</a></li></ul></ul></div><a href="#&#x7248;&#x672C;&#x7BA1;&#x7406;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x7248;&#x672C;&#x7BA1;&#x7406;"><a name="&#x7248;&#x672C;&#x7BA1;&#x7406;" class="anchor-navigation-ex-anchor" href="#&#x7248;&#x672C;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a> &#x7248;&#x672C;&#x7BA1;&#x7406;</h1>
+<h2 id="&#x7248;&#x672C;&#x56DE;&#x6EAF;"><a name="&#x7248;&#x672C;&#x56DE;&#x6EAF;" class="anchor-navigation-ex-anchor" href="#&#x7248;&#x672C;&#x56DE;&#x6EAF;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x7248;&#x672C;&#x56DE;&#x6EAF;</h2>
+<ul>
+<li><p>&#x67E5;&#x770B;&#x5F53;&#x524D;&#x5206;&#x652F;&#x7684;&#x7248;&#x672C;&#x5386;&#x53F2;</p>
+<blockquote>
+<p>git log</p>
+</blockquote>
+</li>
+<li><p>&#x7248;&#x672C;&#x56DE;&#x6EAF;</p>
+<blockquote>
+<p>git reset --hard version-digest</p>
+</blockquote>
+<p>  &#x6B64;&#x65F6;&#x5DE5;&#x4F5C;&#x533A;&#x548C;&#x6682;&#x5B58;&#x533A;&#x7684;&#x6587;&#x4EF6;&#x5168;&#x90E8;&#x88AB;&#x6062;&#x590D;&#x4E3A;&#x67D0;&#x7248;&#x672C;&#xFF0C;&#x5982;&#x679C;&#x7701;&#x53BB; <code>--hard</code>&#xFF0C;&#x5219;&#x53EA;&#x6709;&#x6682;&#x5B58;&#x533A;&#x7684;&#x6587;&#x4EF6;&#x88AB;&#x6062;&#x590D;&#x3002;</p>
+</li>
+</ul>
+<h2 id="&#x67E5;&#x770B;&#x5DEE;&#x5F02;"><a name="&#x67E5;&#x770B;&#x5DEE;&#x5F02;" class="anchor-navigation-ex-anchor" href="#&#x67E5;&#x770B;&#x5DEE;&#x5F02;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x67E5;&#x770B;&#x5DEE;&#x5F02;</h2>
+<ul>
+<li><p>&#x663E;&#x793A;&#x6682;&#x5B58;&#x533A;&#x548C;&#x5DE5;&#x4F5C;&#x533A;&#x7684;&#x5DEE;&#x5F02;</p>
+<blockquote>
+<p>git status</p>
+</blockquote>
+</li>
+<li><p>&#x663E;&#x793A;&#x6682;&#x5B58;&#x533A;&#x548C;&#x5DE5;&#x4F5C;&#x533A;&#x7684;&#x5DEE;&#x5F02;</p>
+<blockquote>
+<p>git diff</p>
+</blockquote>
+</li>
+<li><p>&#x663E;&#x793A;&#x5DE5;&#x4F5C;&#x533A;&#x4E0E;&#x5F53;&#x524D;&#x5206;&#x652F;&#x6700;&#x65B0;commit&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;</p>
+<blockquote>
+<p>git diff HEAD</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="&#x64A4;&#x9500;&#x4FEE;&#x6539;"><a name="&#x64A4;&#x9500;&#x4FEE;&#x6539;" class="anchor-navigation-ex-anchor" href="#&#x64A4;&#x9500;&#x4FEE;&#x6539;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x64A4;&#x9500;&#x4FEE;&#x6539;</h2>
+<p>git checkout -- <filename>
+&#x6B64;&#x547D;&#x4EE4;&#x4F1A;&#x4F7F;&#x7528; HEAD &#x4E2D;&#x7684;&#x6700;&#x65B0;&#x5185;&#x5BB9;&#x66FF;&#x6362;&#x6389;&#x4F60;&#x7684;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x5DF2;&#x6DFB;&#x52A0;&#x5230;&#x6682;&#x5B58;&#x533A;&#x7684;&#x6539;&#x52A8;&#x4EE5;&#x53CA;&#x65B0;&#x6587;&#x4EF6;&#x90FD;&#x4E0D;&#x4F1A;&#x53D7;&#x5230;&#x5F71;&#x54CD;&#x3002;</filename></p>
+<ul>
+<li><p>&#x6062;&#x590D;&#x6682;&#x5B58;&#x533A;&#x7684;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x5230;&#x5DE5;&#x4F5C;&#x533A;</p>
+<blockquote>
+<p>git checkout [file]</p>
+</blockquote>
+</li>
+<li><p>&#x6062;&#x590D;&#x6682;&#x5B58;&#x533A;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x5230;&#x5DE5;&#x4F5C;&#x533A;</p>
+<blockquote>
+<p>git checkout .</p>
+</blockquote>
+</li>
+<li><p>&#x91CD;&#x7F6E;&#x6682;&#x5B58;&#x533A;&#x7684;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#xFF0C;&#x4E0E;&#x4E0A;&#x4E00;&#x6B21;commit&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x4F46;&#x5DE5;&#x4F5C;&#x533A;&#x4E0D;&#x53D8;</p>
+<blockquote>
+<p>git reset [file]</p>
+</blockquote>
+</li>
+<li><p>&#x91CD;&#x7F6E;&#x6682;&#x5B58;&#x533A;&#x4E0E;&#x5DE5;&#x4F5C;&#x533A;&#xFF0C;&#x4E0E;&#x4E0A;&#x4E00;&#x6B21;commit&#x4FDD;&#x6301;&#x4E00;&#x81F4;</p>
+<blockquote>
+<p>git reset --hard</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="&#x4FDD;&#x5B58;&#x73B0;&#x573A;"><a name="&#x4FDD;&#x5B58;&#x73B0;&#x573A;" class="anchor-navigation-ex-anchor" href="#&#x4FDD;&#x5B58;&#x73B0;&#x573A;"><i class="fa fa-link" aria-hidden="true"></i></a>4. &#x4FDD;&#x5B58;&#x73B0;&#x573A;</h2>
+<ul>
+<li><p>&#x4FDD;&#x5B58;&#x73B0;&#x573A;</p>
+<blockquote>
+<p>git stash</p>
+</blockquote>
+</li>
+<li><p>&#x6062;&#x590D;&#x73B0;&#x573A;</p>
+<blockquote>
+<p>git stash pop</p>
+</blockquote>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="创建仓库.html" class="navigation navigation-prev " aria-label="Previous page: 创建仓库">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="分支管理.html" class="navigation navigation-next " aria-label="Next page: 分支管理">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"版本管理","level":"1.4","depth":1,"next":{"title":"分支管理","level":"1.5","depth":1,"path":"分支管理.md","ref":"分支管理.md","articles":[]},"previous":{"title":"创建仓库","level":"1.3","depth":1,"path":"创建仓库.md","ref":"创建仓库.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","katex-plus","anchor-navigation-ex","edit-link"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"edit-link":{"label":"Edit This Page","base":"https://github.com/whycoding/git_intro_practice/edit/master"},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":false,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"katex-plus":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","author":"Haoyuan Wei","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GitHandOut","language":"zh-hans","links":{"sidebar":{"Home":"http://sce.carleton.ca/~haoyuanwei"}},"gitbook":"*","description":"Git description"},"file":{"path":"版本管理.md","mtime":"2019-03-22T04:58:14.531Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-22T05:05:02.636Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
