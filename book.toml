@@ -1,0 +1,6 @@
+[book]
+authors = ["Haoyuan Wei"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Git Introduction"

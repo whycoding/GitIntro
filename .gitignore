@@ -1,5 +1,4 @@
-_book/
-node_modules/
+book/
 .DS_Store
 makefile
 
