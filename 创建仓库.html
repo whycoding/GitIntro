@@ -1,362 +1,284 @@
-
 <!DOCTYPE HTML>
-<html lang="zh-hans" >
+<html lang="en" class="sidebar-visible no-js">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
+        <title>创建仓库 - Git Introduction</title>
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>创建仓库 · GitHandOut</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Haoyuan Wei">
-        
-        
-    
-    <link rel="stylesheet" href="gitbook/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
 
-    
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-katex-plus/katex.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
         
 
-    
-
-    
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="版本管理.html" />
-    
-    
-    <link rel="prev" href="简介.html" />
-    
-
     </head>
-    <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="输入并搜索" />
-</div>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
 
-            
-                <nav role="navigation">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="简介.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li><a href="创建仓库.html" class="active"><strong aria-hidden="true">2.</strong> 创建仓库</a></li><li><a href="版本管理.html"><strong aria-hidden="true">3.</strong> 版本管理</a></li><li><a href="分支管理.html"><strong aria-hidden="true">4.</strong> 分支管理</a></li><li><a href="远程仓库.html"><strong aria-hidden="true">5.</strong> 远程仓库</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
                 
-
-
-<ul class="summary">
-    
-    
-    
-        
-        <li>
-            <a href="http://sce.carleton.ca/~haoyuanwei" target="_blank" class="custom-link">Home</a>
-        </li>
-    
-    
-
-    
-    <li class="divider"></li>
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    Introduction
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="简介.html">
-            
-                <a href="简介.html">
-            
-                    
-                    简介
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.3" data-path="创建仓库.html">
-            
-                <a href="创建仓库.html">
-            
-                    
-                    创建仓库
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="版本管理.html">
-            
-                <a href="版本管理.html">
-            
-                    
-                    版本管理
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="分支管理.html">
-            
-                <a href="分支管理.html">
-            
-                    
-                    分支管理
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="远程仓库.html">
-            
-                <a href="远程仓库.html">
-            
-                    
-                    远程仓库
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >创建仓库</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x521B;&#x5EFA;&#x4ED3;&#x5E93;"><b> </b>&#x521B;&#x5EFA;&#x4ED3;&#x5E93;</a></li><ul><li><span class="title-icon "></span><a href="#&#x521B;&#x5EFA;"><b>1. </b>&#x521B;&#x5EFA;</a></li><li><span class="title-icon "></span><a href="#&#x4E2D;&#x6587;&#x4E71;&#x7801;"><b>2. </b>&#x4E2D;&#x6587;&#x4E71;&#x7801;</a></li></ul></ul></div><a href="#&#x521B;&#x5EFA;&#x4ED3;&#x5E93;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x521B;&#x5EFA;&#x4ED3;&#x5E93;"><a name="&#x521B;&#x5EFA;&#x4ED3;&#x5E93;" class="anchor-navigation-ex-anchor" href="#&#x521B;&#x5EFA;&#x4ED3;&#x5E93;"><i class="fa fa-link" aria-hidden="true"></i></a> &#x521B;&#x5EFA;&#x4ED3;&#x5E93;</h1>
-<h2 id="&#x521B;&#x5EFA;"><a name="&#x521B;&#x5EFA;" class="anchor-navigation-ex-anchor" href="#&#x521B;&#x5EFA;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x521B;&#x5EFA;</h2>
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Git Introduction</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#创建仓库" id="创建仓库">创建仓库</a></h1>
+<h2><a class="header" href="#创建" id="创建">创建</a></h2>
 <ul>
-<li><p>&#x521D;&#x59CB;&#x5316;&#x4ED3;&#x5E93;</p>
+<li>
+<p>初始化仓库</p>
 <blockquote>
 <p>git init</p>
 </blockquote>
-<p>  &#x6B64;&#x547D;&#x4EE4;&#x5C06;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x767D;&#x7684;&#x4ED3;&#x5E93;&#xFF0C;&#x4ED3;&#x5E93;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x4EE5;&#x53CA;&#x672A;&#x6765;&#x4ED3;&#x5E93;&#x7684;&#x66F4;&#x6539;&#x8BB0;&#x5F55;&#x5C06;&#x88AB;&#x5B58;&#x50A8;&#x5728;&#x751F;&#x6210; <code>.git</code> &#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x3002;&#x6CE8;&#x610F;&#xFF1A;&#x5728;&#x7C7B; Unix &#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x4EE5; . &#x5F00;&#x5934;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x4EE3;&#x8868;&#x8BE5;&#x6587;&#x4EF6;&#x4E3A;&#x9690;&#x85CF;&#x6587;&#x4EF6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E0D;&#x53EF;&#x89C1;&#xFF0C;&#x4F7F;&#x7528; <code>ls -a</code> &#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x9690;&#x85CF;&#x6587;&#x4EF6;&#x5939;&#x3002;</p>
+<p>此命令将创建一个空白的仓库，仓库的配置信息以及未来仓库的更改记录将被存储在生成 <code>.git</code> 文件夹中。注意：在类 Unix 系统中，以 . 开头的文件名代表该文件为隐藏文件，默认不可见，使用 <code>ls -a</code> 命令可以显示隐藏文件夹。</p>
 </li>
-<li><p>&#x7F16;&#x8F91; Git &#x914D;&#x7F6E;&#x6587;&#x4EF6;
-  Git&#x7684;&#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x4E3A;.gitconfig&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x5728;&#x7528;&#x6237;&#x4E3B;&#x76EE;&#x5F55;&#x4E0B;&#xFF08;&#x5168;&#x5C40;&#x914D;&#x7F6E;&#xFF09;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E0B;&#xFF08;&#x9879;&#x76EE;&#x914D;&#x7F6E;&#xFF09;
-  &#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x6765;&#x8BBE;&#x7F6E;&#x4FEE;&#x6539;&#x4EBA;&#x7684;&#x540D;&#x79F0;&#x53CA;&#x90AE;&#x7BB1;&#x5730;&#x5740;&#xFF0C;&#x5176;&#x4E2D; <code>--global</code> &#x8868;&#x793A;&#x8BE5;&#x8BBE;&#x7F6E;&#x4F5C;&#x7528;&#x5728;&#x6240;&#x6709;&#x7684;&#x4ED3;&#x5E93;&#x3002;</p>
+<li>
+<p>编辑 Git 配置文件
+Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）
+使用以下命令来设置修改人的名称及邮箱地址，其中 <code>--global</code> 表示该设置作用在所有的仓库。</p>
 <blockquote>
 <p>git config [--global] user.name &quot;your name&quot;</p>
+</blockquote>
+<blockquote>
 <p>git config [--global] user.email &quot;your email address&quot;</p>
 </blockquote>
-<pre><code>  git config [--global] user.name &quot;your name&quot;
-  git config [--global] user.email &quot;your email address&quot;
-</code></pre></li>
-<li><p>&#x6DFB;&#x52A0;&#x4FEE;&#x6539;&#x5230;&#x6682;&#x5B58;&#x533A;</p>
-<p>  &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x767D;&#x6587;&#x672C;&#x6587;&#x4EF6; <code>readme.txt</code>&#xFF0C;&#x4F7F;&#x7528; <code>ls</code> &#x547D;&#x4EE4;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6B64;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4F7F;&#x7528; <code>git ls-files</code> &#x5219;&#x65E0;&#x6CD5;&#x53D1;&#x73B0;&#x6B64;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x8BE5;&#x6587;&#x4EF6;&#x8FD8;&#x672A;&#x88AB;&#x6DFB;&#x52A0;&#x8FDB;&#x5165;&#x6682;&#x5B58;&#x533A;&#xFF0C;git &#x4E0D;&#x4F1A;&#x8FFD;&#x8E2A;&#x8BE5;&#x6587;&#x4EF6;&#xFF0C;&#x8FD0;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;</p>
+<pre><code>git config [--global] user.name &quot;your name&quot;
+git config [--global] user.email &quot;your email address&quot;
+</code></pre>
+</li>
+<li>
+<p>添加修改到暂存区</p>
+<p>创建一个空白文本文件 <code>readme.txt</code>，使用 <code>ls</code> 命令，可以发现此文件，但是如果使用 <code>git ls-files</code> 则无法发现此文件，这是因为该文件还未被添加进入暂存区，git 不会追踪该文件，运行以下命令</p>
 <blockquote>
 <p>git add readme.txt</p>
 </blockquote>
-<p>  &#x6211;&#x4EEC;&#x5C06;&#x8BE5;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x8FDB;&#x5165;&#x6682;&#x5B58;&#x533A;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8981;&#x505C;&#x6B62;&#x8FFD;&#x8E2A;&#x8BE5;&#x6587;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>git rm readme.txt</code> &#x547D;&#x4EE4;&#xFF0C;&#x6B64;&#x65F6;&#x8BE5;&#x6587;&#x4EF6;&#x88AB;&#x79FB;&#x51FA;&#x6682;&#x5B58;&#x533A;&#xFF0C;&#x4F46;&#x662F;&#x8BE5;&#x6587;&#x4EF6;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x5DE5;&#x4F5C;&#x533A;&#xFF0C;&#x4E0D;&#x4F1A;&#x88AB;&#x7269;&#x7406;&#x5220;&#x9664;&#x3002;</p>
+<p>我们将该文件添加进入暂存区。如果想要停止追踪该文件，我们使用 <code>git rm readme.txt</code> 命令，此时该文件被移出暂存区，但是该文件仍然存在工作区，不会被物理删除。</p>
 </li>
-<li><p>&#x63D0;&#x4EA4;&#x6682;&#x5B58;&#x533A;&#x7684;&#x4FEE;&#x6539;&#x5230;&#x4ED3;&#x5E93;  </p>
+<li>
+<p>提交暂存区的修改到仓库</p>
 <blockquote>
 <p>git commit -m &quot;message&quot;</p>
 </blockquote>
-<p>  &#x5176;&#x4E2D; <code>-m</code> &#x8868;&#x793A;&#x6DFB;&#x52A0;&#x4FEE;&#x6539;&#x8BF4;&#x660E;&#xFF0C;&#x8BE5;&#x4FEE;&#x6539;&#x8BF4;&#x660E;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x627E;&#x5230;&#x533A;&#x522B;&#x4E0D;&#x540C;&#x7248;&#x672C;&#x3002;&#x6CE8;&#x610F;&#xFF1A;&#x6BCF;&#x6B21;&#x63D0;&#x4EA4;&#x4FEE;&#x6539;&#x5230;&#x4ED3;&#x5E93;&#xFF0C;&#x5FC5;&#x987B;&#x6DFB;&#x52A0;&#x4FEE;&#x6539;&#x8BF4;&#x660E;&#xFF0C;&#x5426;&#x5219;&#x65E0;&#x6CD5;&#x6210;&#x529F;&#x3002;</p>
+<p>其中 <code>-m</code> 表示添加修改说明，该修改说明可以帮助找到区别不同版本。注意：每次提交修改到仓库，必须添加修改说明，否则无法成功。</p>
 </li>
 </ul>
-<h2 id="&#x4E2D;&#x6587;&#x4E71;&#x7801;"><a name="&#x4E2D;&#x6587;&#x4E71;&#x7801;" class="anchor-navigation-ex-anchor" href="#&#x4E2D;&#x6587;&#x4E71;&#x7801;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x4E2D;&#x6587;&#x4E71;&#x7801;</h2>
-<p>&#x4F7F;&#x7528; <code>git ls-files</code> &#x65F6;&#xFF0C;&#x4E2D;&#x6587;&#x6587;&#x4EF6;&#x540D;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x4E71;&#x7801;&#x73B0;&#x8C61;&#xFF0C;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x662F;&#x8FD0;&#x884C;</p>
+<h2><a class="header" href="#中文乱码" id="中文乱码">中文乱码</a></h2>
+<p>使用 <code>git ls-files</code> 时，中文文件名可能会出现乱码现象，解决方案是运行</p>
 <blockquote>
-<p>git config --global core.quotepath false&#x3002;</p>
+<p>git config --global core.quotepath false。</p>
 </blockquote>
-<p>Mac &#x7CFB;&#x7EDF;&#x4E0B;&#x5982;&#x679C;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x4E86; <code>oh-my-zsh</code>&#xFF0C;&#x5219;&#x9700;&#x8981;&#x6253;&#x5F00;</p>
+<p>Mac 系统下如果同时使用了 <code>oh-my-zsh</code>，则需要打开</p>
 <ol>
-<li><p>&#x6253;&#x5F00;oh-my-zsh&#x914D;&#x7F6E;&#x6587;&#x4EF6; ~/.zshrc &#x3002;</p>
+<li>
+<p>打开oh-my-zsh配置文件 ~/.zshrc 。</p>
 </li>
-<li><p>&#x5728;&#x6587;&#x4EF6;&#x6700;&#x540E;&#x9762;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<li>
+<p>在文件最后面添加如下代码：</p>
 <blockquote>
 <p>export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8</p>
 </blockquote>
 </li>
-<li><p>&#x91CD;&#x542F;&#x4E0B;&#x7EC8;&#x7AEF;&#xFF08;terminal&#xFF09;&#x6216;&#x8F93;&#x5165; source ~/.zshrc</p>
+<li>
+<p>重启下终端（terminal）或输入 source ~/.zshrc</p>
 </li>
 </ol>
 
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
+                    </main>
 
-                        </div>
-                    </div>
-                
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="简介.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="版本管理.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
             </div>
 
-            
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                <a href="简介.html" class="navigation navigation-prev " aria-label="Previous page: 简介">
-                    <i class="fa fa-angle-left"></i>
-                </a>
+                    <a href="简介.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
-                
-                <a href="版本管理.html" class="navigation navigation-next " aria-label="Next page: 版本管理">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
 
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"创建仓库","level":"1.3","depth":1,"next":{"title":"版本管理","level":"1.4","depth":1,"path":"版本管理.md","ref":"版本管理.md","articles":[]},"previous":{"title":"简介","level":"1.2","depth":1,"path":"简介.md","ref":"简介.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","katex-plus","anchor-navigation-ex","edit-link"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"edit-link":{"label":"Edit This Page","base":"https://github.com/whycoding/git_intro_practice/edit/master"},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":false,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"katex-plus":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","author":"Haoyuan Wei","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GitHandOut","language":"zh-hans","links":{"sidebar":{"Home":"http://sce.carleton.ca/~haoyuanwei"}},"gitbook":"*","description":"Git description"},"file":{"path":"创建仓库.md","mtime":"2019-03-22T04:58:14.531Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-22T05:05:02.636Z"},"basePath":".","book":{"language":""}});
-        });
-    </script>
-</div>
+                
+                    <a href="版本管理.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
 
         
-    <script src="gitbook/gitbook.js"></script>
-    <script src="gitbook/theme.js"></script>
-    
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
-        <script src="gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+
         
-    
+
         
-        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+
         
-    
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
         
-    
+
         
-        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
 
     </body>
 </html>
-

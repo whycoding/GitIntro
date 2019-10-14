@@ -3,7 +3,9 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>版本管理 - Git Introduction</title>
+        <title>Git Introduction</title>
+        
+        <meta name="robots" content="noindex" />
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -78,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li><a href="简介.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li><a href="创建仓库.html"><strong aria-hidden="true">2.</strong> 创建仓库</a></li><li><a href="版本管理.html" class="active"><strong aria-hidden="true">3.</strong> 版本管理</a></li><li><a href="分支管理.html"><strong aria-hidden="true">4.</strong> 分支管理</a></li><li><a href="远程仓库.html"><strong aria-hidden="true">5.</strong> 远程仓库</a></li></ol>
+                <ol class="chapter"><li><a href="简介.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li><a href="创建仓库.html"><strong aria-hidden="true">2.</strong> 创建仓库</a></li><li><a href="版本管理.html"><strong aria-hidden="true">3.</strong> 版本管理</a></li><li><a href="分支管理.html"><strong aria-hidden="true">4.</strong> 分支管理</a></li><li><a href="远程仓库.html"><strong aria-hidden="true">5.</strong> 远程仓库</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,7 +147,84 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#版本管理" id="版本管理">版本管理</a></h1>
+                        <h1><a class="header" href="#简介" id="简介">简介</a></h1>
+<h2><a class="header" href="#git-的作用" id="git-的作用">Git 的作用</a></h2>
+<p>Git 是一个分布式版本管理系统，是 <code>Linux</code> 内核的创始人 Liunus Torvas 为了更好地管理 <code>Linux</code> 内核开发而开发的。</p>
+<p>Git可以在任何时间点，把文档的状态作为更新记录保存起来。因此可以把编辑过的文档复原到以前的状态，也可以显示编辑前后的内容差异。</p>
+<p>而且，编辑旧文件后，试图覆盖较新的文件的时候（即上传文件到服务器时），系统会发出警告，因此可以避免在无意中覆盖了他人的编辑内容。</p>
+<h2><a class="header" href="#基本概念" id="基本概念">基本概念</a></h2>
+<p>在 Git 系统中，对文件进行修改后，需要提交修改，执行提交后，Git 会记录上次提交的状态与当前状态的差异记录，并给当前版本分配一个 Hash 值作为唯一的命名。</p>
+<p>凭借该提交和最新的文件状态，就可以知道过去的修改记录以及内容。
+指定这个命名，就可以在代码库中找到对应的提交。</p>
+<p>Git 的代码库分为远程代码库和本地代码库的两种。</p>
+<ul>
+<li>远程代码库: 配有专用的服务器，为了多人共享而建立的代码库。</li>
+<li>本地代码库: 为了方便用户个人使用，在自己的机器上配置的代码库。</li>
+</ul>
+<p><img src="img/git_concept.png" alt="" /></p>
+<p>本地仓库由三部分组成。第一个是你的<code>工作区</code>，它持有实际文件；第二个是<code>暂存区</code>，它像个缓存区域，临时保存你的改动；最后是<code>仓库区</code></p>
+<h1><a class="header" href="#创建仓库" id="创建仓库">创建仓库</a></h1>
+<h2><a class="header" href="#创建" id="创建">创建</a></h2>
+<ul>
+<li>
+<p>初始化仓库</p>
+<blockquote>
+<p>git init</p>
+</blockquote>
+<p>此命令将创建一个空白的仓库，仓库的配置信息以及未来仓库的更改记录将被存储在生成 <code>.git</code> 文件夹中。注意：在类 Unix 系统中，以 . 开头的文件名代表该文件为隐藏文件，默认不可见，使用 <code>ls -a</code> 命令可以显示隐藏文件夹。</p>
+</li>
+<li>
+<p>编辑 Git 配置文件
+Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）
+使用以下命令来设置修改人的名称及邮箱地址，其中 <code>--global</code> 表示该设置作用在所有的仓库。</p>
+<blockquote>
+<p>git config [--global] user.name &quot;your name&quot;</p>
+</blockquote>
+<blockquote>
+<p>git config [--global] user.email &quot;your email address&quot;</p>
+</blockquote>
+<pre><code>git config [--global] user.name &quot;your name&quot;
+git config [--global] user.email &quot;your email address&quot;
+</code></pre>
+</li>
+<li>
+<p>添加修改到暂存区</p>
+<p>创建一个空白文本文件 <code>readme.txt</code>，使用 <code>ls</code> 命令，可以发现此文件，但是如果使用 <code>git ls-files</code> 则无法发现此文件，这是因为该文件还未被添加进入暂存区，git 不会追踪该文件，运行以下命令</p>
+<blockquote>
+<p>git add readme.txt</p>
+</blockquote>
+<p>我们将该文件添加进入暂存区。如果想要停止追踪该文件，我们使用 <code>git rm readme.txt</code> 命令，此时该文件被移出暂存区，但是该文件仍然存在工作区，不会被物理删除。</p>
+</li>
+<li>
+<p>提交暂存区的修改到仓库</p>
+<blockquote>
+<p>git commit -m &quot;message&quot;</p>
+</blockquote>
+<p>其中 <code>-m</code> 表示添加修改说明，该修改说明可以帮助找到区别不同版本。注意：每次提交修改到仓库，必须添加修改说明，否则无法成功。</p>
+</li>
+</ul>
+<h2><a class="header" href="#中文乱码" id="中文乱码">中文乱码</a></h2>
+<p>使用 <code>git ls-files</code> 时，中文文件名可能会出现乱码现象，解决方案是运行</p>
+<blockquote>
+<p>git config --global core.quotepath false。</p>
+</blockquote>
+<p>Mac 系统下如果同时使用了 <code>oh-my-zsh</code>，则需要打开</p>
+<ol>
+<li>
+<p>打开oh-my-zsh配置文件 ~/.zshrc 。</p>
+</li>
+<li>
+<p>在文件最后面添加如下代码：</p>
+<blockquote>
+<p>export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8</p>
+</blockquote>
+</li>
+<li>
+<p>重启下终端（terminal）或输入 source ~/.zshrc</p>
+</li>
+</ol>
+<h1><a class="header" href="#版本管理" id="版本管理">版本管理</a></h1>
 <h2><a class="header" href="#版本回溯" id="版本回溯">版本回溯</a></h2>
 <ul>
 <li>
@@ -227,21 +306,60 @@
 </blockquote>
 </li>
 </ul>
+<h1><a class="header" href="#分支管理" id="分支管理">分支管理</a></h1>
+<p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。</p>
+<h2><a class="header" href="#创建分支" id="创建分支">创建分支</a></h2>
+<blockquote>
+<p>git branch [branch-name]</p>
+</blockquote>
+<p>git checkout -b [branch] 新建一个分支，并切换到该分支</p>
+<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
+<h2><a class="header" href="#切换分支" id="切换分支">切换分支</a></h2>
+<p>git checkout [branch-name] 切换到指定分支，并更新工作区</p>
+<h2><a class="header" href="#合并分支" id="合并分支">合并分支</a></h2>
+<p>git merge [branch] # 选择一个commit，合并进当前分支</p>
+<h2><a class="header" href="#删除分支" id="删除分支">删除分支</a></h2>
+<p>git branch -d [branch-name] # 删除分支</p>
+<p>git cherry-pick [commit] # 选择一个commit，合并进当前分支
+$ git cherry-pick [commit]</p>
+<h1><a class="header" href="#远程仓库" id="远程仓库">远程仓库</a></h1>
+<h2><a class="header" href="#申请-github-账号" id="申请-github-账号">申请 GitHub 账号</a></h2>
+<h2><a class="header" href="#创建远程仓库" id="创建远程仓库">创建远程仓库</a></h2>
+<h2><a class="header" href="#连接远程仓库" id="连接远程仓库">连接远程仓库</a></h2>
+<blockquote>
+<p>git remote add origin https://github.com/username/repository_name
+git push -u origin master</p>
+</blockquote>
+<h2><a class="header" href="#将修改提交到远程仓库" id="将修改提交到远程仓库">将修改提交到远程仓库</a></h2>
+<blockquote>
+<p>git push -u origin master</p>
+</blockquote>
+<h2><a class="header" href="#下载远程仓库的所有变动" id="下载远程仓库的所有变动">下载远程仓库的所有变动</a></h2>
+<blockquote>
+<p>git fetch [remote]</p>
+</blockquote>
+<ul>
+<li>
+<p>取回远程仓库的变化，并与本地分支合并, 相当于获取（fetch） 并合并（merge） 远端的改动</p>
+<blockquote>
+<p>git pull [remote] [branch]</p>
+</blockquote>
+</li>
+<li>
+<p>上传本地指定分支到远程仓库</p>
+<blockquote>
+<p>git push [remote] [branch]</p>
+</blockquote>
+<p>使用关键字 <code>--force</code>，强行推送当前分支到远程仓库，即使有冲突</p>
+</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="创建仓库.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
 
-                        
-                            <a rel="next" href="分支管理.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -251,15 +369,7 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="创建仓库.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
 
-                
-                    <a href="分支管理.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
@@ -299,6 +409,14 @@
         <!-- Custom JS scripts -->
         
 
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
         
 
     </body>
