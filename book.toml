@@ -1,6 +1,6 @@
 [book]
 authors = ["Haoyuan Wei"]
-language = "en"
+language = "zh-hans"
 multilingual = false
 src = "src"
 title = "Git Introduction"
